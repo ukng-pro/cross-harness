@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cross-harness"
+version = "0.1.0"
+description = "Semi-Autonomous Cross-Model Collaboration System"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = [
+    "typer[all]>=0.9",
+    "pydantic>=2.0",
+    "textual>=0.40",
+    "pyyaml>=6.0",
+]
+
+[project.scripts]
+cross-harness = "cross_harness.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cross_harness"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
